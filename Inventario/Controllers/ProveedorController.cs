@@ -7,6 +7,7 @@ using Inventario.Models;
 
 namespace Inventario.Controllers
 {
+    [Authorize]
     public class ProveedorController : Controller
     {
         // GET: Proveedor
@@ -19,6 +20,7 @@ namespace Inventario.Controllers
                
         }
 
+       
         public ActionResult Edit(int id)
         {
             using (var db = new inventarioEntities1())
