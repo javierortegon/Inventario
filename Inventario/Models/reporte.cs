@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Inventario.Models
 {
-    public class modelocustom
+    public class reporte
     {
-        proveedor proveedor { get; set; }
-
+        public string producto { get; set; }
+        public string proveedor { get; set; }
     }
 }

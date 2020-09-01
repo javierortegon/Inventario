@@ -80,9 +80,24 @@ namespace Inventario.Controllers
             }
         }
 
-        public ActionResult testMetodo()
+        public ActionResult Reporte()
         {
-            return View();
+            try
+            {
+                var db = new inventarioEntities1();
+                    var query = from proveedor in db.proveedor
+                                join producto in db.producto on proveedor.id equals producto.id_proveedor
+                                select new reporte { producto = producto.nombre, proveedor = proveedor.nombre };
+
+                    return View(query);
+                
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error" + ex);
+                return View();
+                throw;
+            }
         }
     }
 }

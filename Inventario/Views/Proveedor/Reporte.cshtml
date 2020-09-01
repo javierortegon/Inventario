@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Inventario.Models.reporte>
+
+@{ 
+    var query = Model;
+}
+
+@{ 
+    foreach(var item in Model)
+    {
+        <h2>@Html.DisplayFor(modelItem => item.producto)</h2>
+        <p>@Html.DisplayFor(modelItem => item.proveedor)</p>
+    }
+}
