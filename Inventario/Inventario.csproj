@@ -280,6 +280,7 @@
     <Content Include="Views\Producto\listarProveedores.cshtml" />
     <Content Include="Views\Proveedor\Reporte.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

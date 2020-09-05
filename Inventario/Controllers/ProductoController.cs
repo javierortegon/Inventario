@@ -72,5 +72,39 @@ namespace Inventario.Controllers
                 return db.proveedor.Find(idProveedor).nombre;
             }
         }
+
+
+        public ActionResult Edit(int id)
+        {
+            using (var db = new inventarioEntities1())
+            {
+                producto producto = db.producto.Where(a => a.id == id).FirstOrDefault();
+                return View(producto);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(producto producto)
+        {
+            try
+            {
+                using (var db = new inventarioEntities1())
+                {
+                    producto productoEdit = db.producto.Find(producto.id);
+                    productoEdit.nombre = producto.nombre;
+                    productoEdit.percio_unitario = producto.percio_unitario;
+                    productoEdit.cantidad = producto.cantidad;
+                    productoEdit.descripcion = producto.descripcion;
+                    productoEdit.id_proveedor = producto.id_proveedor;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
