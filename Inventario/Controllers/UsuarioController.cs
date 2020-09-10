@@ -41,5 +41,11 @@ namespace Inventario.Controllers
             }
         }
 
+        [Authorize]
+        public ActionResult CloseSession()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

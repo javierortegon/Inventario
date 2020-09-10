@@ -101,5 +101,48 @@ namespace Inventario.Controllers
                 throw;
             }
         }
+
+        public ActionResult Custom()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Custom(FormCollection formCollection)
+        {
+            try
+            {
+                cliente newCliente = new cliente
+                {
+                    nombre = formCollection["nombrecliente"],
+                    documento= formCollection["documentocliente"],
+                    email = formCollection["emailcliente"]
+                };
+
+                proveedor newProveedor = new proveedor
+                {
+                    nombre = formCollection["nombrepro"],
+                    direccion = formCollection["direccionpro"],
+                    telefono = formCollection["telpro"],
+                    nombre_contacto = formCollection["nombrecontapro"]
+                };
+
+                using (var db = new inventarioEntities1())
+                {
+                    db.cliente.Add(newCliente);
+                    db.proveedor.Add(newProveedor);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error" + ex);
+                return View();
+                throw;
+            }
+        }
+
     }
 }

@@ -24,6 +24,12 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
+                        <li>@Html.ActionLink("Cerrar Sesion", "CloseSession", "Usuario")</li>
+                    }
+
                 </ul>
             </div>
         </div>
